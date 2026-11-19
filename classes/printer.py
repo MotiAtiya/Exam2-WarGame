@@ -1,13 +1,15 @@
 import os
+from .card import Card
+
 
 class Printer:
     @staticmethod
-    def display_round_result(player_card, computer_card, winner, player_card_numbers, computer_card_numbers):
+    def display_round_result(player_card:Card, computer_card:Card, winner, player_card_numbers, computer_card_numbers):
         Printer.claer_screen()
         print("========== TURN ==========\n")
-        print("Player:".ljust(10), player_card)
-        print("Computer:".ljust(10), computer_card)
-        print()
+        print("Player:".ljust(15), "Computer:")
+        Printer.show_two_cards(player_card, computer_card)
+
         if winner is None:
             print("It's a draw!")
         else:
@@ -32,4 +34,15 @@ class Printer:
         for num, describe in menu.items():
             print(f"{num}. {describe}")
         print()
-    
+
+    @staticmethod
+    def show_two_cards(p:Card, c:Card):
+        print(f"""
++-------+       +-------+
+| {p.get_formated_value():<2}    |       | {c.get_formated_value():<2}    |
+|       |       |       |
+|   {p.get_formated_type()}   |       |   {c.get_formated_type()}   |
+|       |       |       |
+|    {p.get_formated_value():>2} |       |    {c.get_formated_value():>2} |
++-------+       +-------+
+""")

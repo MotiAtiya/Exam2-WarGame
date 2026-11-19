@@ -7,7 +7,6 @@ class Card:
         self.card_value = card_value
         self.card_type = card_type
 
-
     def __str__(self):
         return f"{self.get_formated_value().ljust(2)} {self.get_formated_type()}"
 
