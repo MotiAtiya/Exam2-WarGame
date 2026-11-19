@@ -9,7 +9,7 @@ class Card:
 
 
     def __str__(self):
-        return self.get_formated_value() + ' ' + self.get_formated_type()
+        return f"{self.get_formated_value().ljust(2)} {self.get_formated_type()}"
 
     def get_formated_value(self):
         formated_value = ''
