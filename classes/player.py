@@ -8,6 +8,7 @@ class Player:
         self.cards = queue.Queue()
 
     def initial_cards(self, cards:list) -> None:
+        self.cards = queue.Queue()
         for card in cards:
             self.cards.put(card)
 

@@ -1,13 +1,20 @@
 from .player import Player
 from .deck import Deck
 from .printer import Printer
-
+from .user_input import UserInput
 
 class Game:
     def __init__(self, player:Player, computer:Player):
         self.player = player
         self.computer = computer
         self.deck = Deck()
+        self.menu = {
+            1: "Play turn",
+            2: "Exit"
+        }
+
+    def initial_game(self):
+        self.deck.initial_deck()
         self.player.initial_cards(self.deck.cards[:26])
         self.computer.initial_cards(self.deck.cards[26:])
 
@@ -46,6 +53,14 @@ class Game:
         
 
     def run(self):
-        while self.player.cards.qsize() and self.computer.cards.qsize():
-            self.play_turn()
+        self.initial_game()
+        Printer.claer_screen()
 
+        continue_playing = True
+        while continue_playing:
+            Printer.display_menu(self.menu)
+            choice = UserInput.ask_choice(1,len(self.menu))
+            if choice == 1:
+                self.play_turn()
+            if choice == 2:
+                continue_playing = False

@@ -5,8 +5,6 @@ import random
 class Deck:
     def __init__(self):
         self.cards = []
-        self.create_deck()
-        self.rand_deck()
 
 
     def create_deck(self):
@@ -22,3 +20,10 @@ class Deck:
             while i == j:
                 j = random.randint(0, 51)
             self.cards[i], self.cards[j] = self.cards[j], self.cards[i]
+
+
+    def initial_deck(self):
+        self.cards = []
+        self.create_deck()
+        self.rand_deck()
+    
