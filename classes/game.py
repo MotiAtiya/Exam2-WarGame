@@ -3,6 +3,7 @@ from .deck import Deck
 from .printer import Printer
 from .user_input import UserInput
 
+
 class Game:
     def __init__(self, player:Player, computer:Player):
         self.player = player
@@ -12,6 +13,7 @@ class Game:
             1: "Play turn",
             2: "Exit"
         }
+
 
     def initial_game(self):
         self.deck.initial_deck()
